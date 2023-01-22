@@ -5,8 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Denomination extends Model
+class Sale extends Model
 {
-    use HasFactory;
-    protected $fillable = ['type','value','image'];
+    use HasFactory; 
+    protected $fillable =['total','items','cash','change','status','user_id'];
 }

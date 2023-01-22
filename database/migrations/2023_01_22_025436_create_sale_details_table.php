@@ -13,11 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('denominations', function (Blueprint $table) {
+        Schema::create('sale_details', function (Blueprint $table) {
             $table->id();
-            $table->enum('type',['BILLETE','MONEDA','OTRO'])->default('BILLETE');
-            $table->string('value',255);
-            $table->string('image',100)->nullable();
+            $table->decimal('price',10,2);
+            $table->decimal('quantity',10,2);
+
+            $table->foreignId('product_id')->constrained(); //product
+            $table->foreignId('sale_id')->constrained(); //product
+            
             $table->timestamps();
         });
     }
@@ -29,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('denominations');
+        Schema::dropIfExists('sale_details');
     }
 };

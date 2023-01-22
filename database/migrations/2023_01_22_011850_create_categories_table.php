@@ -13,10 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('denominations', function (Blueprint $table) {
+        Schema::create('categories', function (Blueprint $table) {
             $table->id();
-            $table->enum('type',['BILLETE','MONEDA','OTRO'])->default('BILLETE');
-            $table->string('value',255);
+            $table->string('name',255);
             $table->string('image',100)->nullable();
             $table->timestamps();
         });
@@ -29,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('denominations');
+        Schema::dropIfExists('categories');
     }
 };
